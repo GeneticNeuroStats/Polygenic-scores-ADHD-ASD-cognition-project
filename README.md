@@ -1,7 +1,8 @@
-# Supplemental Scripts. 
+# Supplemental Scripts
 ## Publication: Polygenic Risk Score for Child-Onset Psychiatric Disorders is associated with cognitive abilities during childhood.
-### Status: In preparation
-### Maintainers:  Sofia Aguilar-Lacasaña <sofia.aguilar@isglobal.org>, Natalia Vilor-Tejedor <natalia.vilortejedor@crg.eu>
+Status: In preparation
+Maintainers:  Sofia Aguilar-Lacasaña <sofia.aguilar@isglobal.org>, Natalia Vilor-Tejedor <natalia.vilortejedor@crg.eu>
+Date last modification: 09/10/2019
 
 ## Objective
 
