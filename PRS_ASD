@@ -1,0 +1,59 @@
+R --file=PRSice_v1.25.R -q --args \
+plink ./plink_1.9_linux_160914 \
+base daner_AUT_meta14_CEU_all.hg19.Mar2016_info_0.60_maf_0.05_release_Jun2017.tsv_modificat  \
+target BREATHE_QC_FINAL \
+pheno.file phenotype.txt \
+covary T \
+ancestry.dim PCA \
+fastscore T \
+barchart.levels 0.01,0.05,0.1,0.5,1 \
+report.individual.scores T \
+ggfig F \
+cleanup F
+
+##base: GWAS results file from the meta-analysis of ASD by the Psychiatric Genomics Consortium (PGC) and the Lundbeck Foundation Initiative Psychiatric Research (iPSYCH) released in November 2017. Samples of European acestry (18,382 cases, 27,969 controls. Genome version: hg19.
+
+##target: The target data set is supplied in PLINK binary format , with the extensions .bed, .bim, .fam - where .bed contains compressed genotype data. Missing phenotype data can be coded as NA, or -9 for binary traits. BREATHE_QC_FINAL is the name of the file. There are 1667 children after the QC.
+
+##pheno.file: Location of the file containing external phenotype data, if it is not coded in the genotype file. This file must have two columns, individual ID and phenotype, with no header line. Missing data is coded NA, and NA and -9 for binary traits. If NA, phenotypes will be extracted from the genotype data. Default value is NA
+
+##covary: T. covariates are used when testing model fit of polygenic score on phenotype.
+
+##ancestry.dim: PCA. We specify the method that we want.
+
+##clump.snps: With this argument, base SNPs will be clumped to remove linkage desequilibrium. In our case, we do not add this argument, so is calculated by default T.  
+
+##fastscore: if this argument is true (T), scores will only be calculated at the thresholds specified by barchart.levels.
+
+##barchart.levels: Thresholds which should be plotted on the bar chart. 0.01,0.05,0.1,0.5,1
+
+##report.individual.scores: if this argument is true (T), a file will be produced containing every individual's polygenic risk score at every threshold (or just the most predictive threshold and written to the working directory.
+
+##ggfig: If T, ggplot2 will be used to generate figures. If F, base graphics will be used to generate figures.We select F.
+
+##cleanup: if this argument is False(F), all temporary files will not be removed at the end of the analysis. We select F.
+
+##plink: the location and name of the binary file for executing plnk. ./plink_1.9_linux_160914 \
+
+#Script to merge polygenic scores for the different thresholds (ASD)
+
+df1 = read.table(file="PROFILES.0.01.profile", header=T)
+df2 = read.table(file="PROFILES.0.05.profile", header=T)
+df3 = read.table(file="PROFILES.0.1.profile", header=T)
+df4 = read.table(file="PROFILES.0.5.profile", header=T)
+df5 = read.table(file="PROFILES.1.profile", header=T)
+
+suppressWarnings(data <- merge(df1[,c(2,6)], df2[,c(2,6)], by="IID"))
+suppressWarnings(data <-  merge(data, df3[,c(2,6)], by="IID"))
+suppressWarnings(data <-  merge(data, df4[,c(2,6)], by="IID"))
+suppressWarnings(data <- merge(data, df5[,c(2,6)], by="IID"))
+
+names(data) = c("IID", "ASD_0_01", "ASD_0_05", "ASD_0_1", "ASD_0_5", "ASD_1")
+
+data$ASD_0_01 = scale(data$ASD_0_01)
+data$ASD_0_05 = scale(data$ASD_0_05)
+data$ASD_0_1 = scale(data$ASD_0_1)
+data$ASD_0_5 = scale(data$ASD_0_5)
+data$ASD_1 = scale(data$ASD_1)
+
+write.table(data, file="PRS_ASD_BREATHE_scaled_20190509.txt", row.names=F, col.names=T, quote=F, sep="\t")
