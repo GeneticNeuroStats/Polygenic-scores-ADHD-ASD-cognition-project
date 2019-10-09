@@ -1,8 +1,20 @@
-# PRS_ADHD_ASD_cognition
+# Supplemental Scripts. 
+## Publication: Polygenic Risk Score for Child-Onset Psychiatric Disorders is associated with cognitive abilities during childhood.
+### Status: In preparation
+### Maintainers:  Sofia Aguilar-Lacasaña <sofia.aguilar@isglobal.org>, Natalia Vilor-Tejedor <natalia.vilortejedor@crg.eu>
 
-#I am going to calculate Polygenic Risk Scores of ASD and ADHD
+## Objective
 
-# POLYGENIC RISK SCORES: ADHD
+I am going to calculate Polygenic Risk Scores of ASD and ADHD.  (Incluir objetivo del paper).
+
+## File's Description
+
+(Describir los ficheros incluidos en el repositorio). Que contienen, para que sirven.
+
+
+
+
+# POLYGENIC RISK SCORES: ADHD (Esta parte hacia abajo debe ir en otro file y incluirla dentro del repositorio)
 
 R --file=PRSice_v1.25.R -q --args \
 plink ./plink_1.9_linux_160914 \
