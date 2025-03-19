@@ -3,7 +3,7 @@
 
 Status: In preparation
 
-Maintainers:  Sofia Aguilar-Lacasaña <sofia.aguilar@isglobal.org>, Natalia Vilor-Tejedor <natalia.vilortejedor@crg.eu>
+Maintainers:  Sofia Aguilar-Lacasaña <sofia.aguilar@isglobal.org>, Natalia Vilor-Tejedor <nvilor@barcelonabeta.org>
 
 Date last modification: 09/10/2019
 
