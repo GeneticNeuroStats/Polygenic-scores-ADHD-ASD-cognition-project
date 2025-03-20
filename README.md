@@ -1,22 +1,10 @@
 # Supplemental Scripts
 ## Publication: Polygenic Risk Score for Child-Onset Psychiatric Disorders is associated with cognitive abilities during childhood.
-
-Status: In preparation
+Aguilar-Lacasaña, S., Vilor-Tejedor, N., Jansen, P. R., López-Vicente, M., Bustamante, M., Burgaleta, M., Sunyer, J., & Alemany, S. (2022). Polygenic risk for ADHD and ASD and their relation with cognitive measures in school children. Psychological Medicine, 52(7), 1356–1364. https://doi.org/10.1017/S0033291720003189
 
 Maintainers:  Sofia Aguilar-Lacasaña <sofia.aguilar@isglobal.org>, Natalia Vilor-Tejedor <nvilor@barcelonabeta.org>
 
 Date last modification: 09/10/2019
-
-## Objective
-
-I am going to calculate Polygenic Risk Scores of ASD and ADHD.  (Incluir objetivo del paper).
-
-## File's Description
-
-(Describir los ficheros incluidos en el repositorio). Que contienen, para que sirven.
-
-
-
 
 # POLYGENIC RISK SCORES: ADHD (Esta parte hacia abajo debe ir en otro file y incluirla dentro del repositorio)
 
@@ -32,7 +20,6 @@ barchart.levels 0.01,0.05,0.1,0.5,1 \
 report.individual.scores T \
 ggfig F \
 cleanup F
-
 
 # Arguments: 
 
@@ -54,7 +41,6 @@ were defined from phased haplotypes prior to imputation.
 - The GWAS were then metaanalyzed using an inverse-variance weighted fixed effects model. 
 - Association results were considered only for variants with an effective sample size greater than 70% of the full metaanalysis, leaving 8,047,421 variants in the final meta-analysis.
 
-
 In this file, A1 corresponds to reference allele (may or may not be the minor allele) and A2 corresponds to alternative allele (tengo que darles la vuelta!!!!).  This file is formed by different columns:
 
 - CHR Chromosome (hg19) where the SNP is found
@@ -66,7 +52,6 @@ In this file, A1 corresponds to reference allele (may or may not be the minor al
 - OR Odds ratio for the effect of the A1 allele (binary phenotype)
 - SE Standard error of the log(OR)
 - P P-value for association test in the meta-analysis
-
 
 ##Target: The target data set is supplied in PLINK binary format , with the extensions .bed, .bim, .fam - where .bed contains compressed genotype data. Missing phenotype data can be coded as NA, or -9 for binary traits. BREATHE_QC_FINAL is the name of the file. 
 There are 1667 children after the QC taking into account: 
